@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "Submission": {
+      "title": "Vendor Tool Submission",
+      "description": "Vendor or community proposal for a new AI tool or sponsored listing",
+      "type": "object",
+      "properties": {
+        "toolName": {
+          "type": "string",
+          "description": "Name of the proposed tool",
+          "maxLength": 100
+        },
+        "vendorUrl": {
+          "type": "string",
+          "description": "Primary URL of the tool",
+          "maxLength": 300
+        },
+        "pricingUrl": {
+          "type": "string",
+          "description": "Official pricing URL",
+          "maxLength": 300
+        },
+        "category": {
+          "type": "string",
+          "description": "Primary category identifier",
+          "maxLength": 50
+        },
+        "submissionType": {
+          "type": "string",
+          "enum": ["standard", "sponsor"],
+          "description": "Editorial proposal or sponsored inquiry"
+        },
+        "pricingModel": {
+          "type": "string",
+          "description": "Pricing model summary",
+          "maxLength": 100
+        },
+        "contactEmail": {
+          "type": "string",
+          "description": "Vendor contact email",
+          "maxLength": 150
+        },
+        "summary": {
+          "type": "string",
+          "description": "Short description of the tool",
+          "maxLength": 1000
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional differentiator notes",
+          "maxLength": 2000
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of submission creation"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Optional submitter UID if signed in"
+        }
+      },
+      "required": ["toolName", "vendorUrl", "pricingUrl", "category", "contactEmail", "submissionType", "createdAt"]
+    },
+    "SavedTool": {
+      "title": "User Saved Tool",
+      "description": "User bookmarked tool for comparison or shortlist",
+      "type": "object",
+      "properties": {
+        "toolId": {
+          "type": "string",
+          "description": "Identifier of the saved tool",
+          "maxLength": 64
+        },
+        "savedAt": {
+          "type": "string",
+          "description": "ISO timestamp when the tool was bookmarked"
+        }
+      },
+      "required": ["toolId", "savedAt"]
+    }
+  },
+  "firestore": {
+    "/submissions/{submissionId}": {
+      "schema": {
+        "$ref": "#/entities/Submission"
+      },
+      "description": "Collection of community and vendor tool proposals"
+    },
+    "/users/{userId}/savedTools/{toolId}": {
+      "schema": {
+        "$ref": "#/entities/SavedTool"
+      },
+      "description": "User's bookmarked tools"
+    }
+  }
+}

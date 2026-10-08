@@ -1,0 +1,6 @@
+{
+  "name": "ToolScout",
+  "description": "An independent field guide to AI software. Compare what matters, browse by workflow and category, and verify details with the maker.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
