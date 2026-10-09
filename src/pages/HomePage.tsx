@@ -310,7 +310,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 onNavigate('/tools');
               }}
             >
-              See all 8 launch-edition listings <span className="btn-arrow" aria-hidden="true">→</span>
+              See all {tools.length} directory listings <span className="btn-arrow" aria-hidden="true">→</span>
             </a>
           </div>
         </div>
